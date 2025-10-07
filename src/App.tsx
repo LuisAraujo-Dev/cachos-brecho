@@ -1,9 +1,12 @@
-import './globals.css'
+import CadastroPeca from './pages/Dashboard/CadastroPeca';
+import './globals.css';
 
 function App() {
   return (
-    <h1 className='var(--color-castanho)'>Cachos-brecho</h1>
-  )
+    <div className="min-h-screen py-10"> 
+        <CadastroPeca />
+    </div>
+  );
 }
 
-export default App
+export default App;
