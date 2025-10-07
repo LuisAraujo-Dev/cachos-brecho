@@ -14,12 +14,14 @@ export interface Peca {
     valorCusto?: number; 
     dataAquisicao?: string;
     
-    precoVenda: number;
+    precoVenda?: number;
     status: StatusPeca;
     dataStatusAtual: Date;
     
     corPrincipal: string;
     descricao?: string;
+
+    brechoParceiro?: string;
 }
 
 export interface PecaForm {
@@ -34,9 +36,11 @@ export interface PecaForm {
     valorCusto?: number | ''; 
     dataAquisicao?: string;
     
-    precoVenda: number | '';
+    precoVenda?: number | '';
     status: StatusPeca;
     
     corPrincipal: string;
     descricao: string;
+
+    brechoParceiro: string;
 }
