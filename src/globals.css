@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+:root {
+    --color-dourado: #FFC72C;
+  --color-creme: #FFFDD0; 
+  --color-castanho: #5F4532;
+  --color-salvia: #9ACD32; 
+}
+
+body {
+  background-color: var(--color-creme);
+  color: var(--color-castanho);
+}
