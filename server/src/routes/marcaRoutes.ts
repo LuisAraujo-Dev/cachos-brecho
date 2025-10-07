@@ -20,6 +20,7 @@ router.post('/', (req, res) => {
         const novaMarca = addMarca(nome);
         res.status(201).json(novaMarca);
     } catch (error) {
+        console.error('Erro ao adicionar nova marca:', error); 
         res.status(500).json({ error: 'Erro ao adicionar marca.' });
     }
 });
