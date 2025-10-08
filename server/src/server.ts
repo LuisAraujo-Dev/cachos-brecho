@@ -5,6 +5,7 @@ import marcaRoutes from './routes/marcaRoutes';
 import pecaRoutes from './routes/pecaRoutes';
 import eventoRoutes from './routes/eventoRoutes';
 import despesaRoutes from './routes/despesaRoutes';
+import configRoutes from './routes/configRoutes';
 
 const app = express();
 const PORT = 3000;
@@ -29,6 +30,7 @@ AppDataSource.initialize()
         app.use('/api/pecas', pecaRoutes);
         app.use('/api/eventos', eventoRoutes);
         app.use('/api/despesas', despesaRoutes); 
+        app.use('/api/config', configRoutes);
         
         app.listen(PORT, () => {
             console.log(`[Server] API rodando em http://localhost:${PORT}`);
