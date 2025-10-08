@@ -1,9 +1,9 @@
-import AdminLayout from './pages/Dashboard/AdminLayout';
+import VitrinePrincipal from './pages/Vitrine/VitrinePrincipal';
 import './globals.css'; 
 
 function App() {
   return (
-    <AdminLayout /> 
+    <VitrinePrincipal /> 
   );
 }
 
