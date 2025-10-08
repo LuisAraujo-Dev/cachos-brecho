@@ -1,6 +1,10 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
+import { Peca } from './entities/Peca';
+import { Marca } from './entities/Marca';
+import { Evento } from './entities/Evento';
+import { Despesa } from './entities/Despesa';
 
 dotenv.config();
 
@@ -12,7 +16,7 @@ export const AppDataSource = new DataSource({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     
-    entities: [], 
+    entities: [Marca, Peca, Despesa, Evento], 
     
     migrations: [],
     
