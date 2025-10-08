@@ -1,4 +1,4 @@
-export type StatusPeca = 'Doação' | 'Reparo' | 'Limpeza' | 'Em Estoque' | 'À Venda' | 'Vendida' | 'Perdida' | 'Devolução';
+export type StatusPeca = 'Limpeza' | 'Reparo' | 'Pronta p/ Consignação' | 'Em Consignação' | 'Vendida' | 'Perdida' | 'Devolução';
 export type OrigemPeca = 'Compra' | 'Doação' | 'Própria';
 
 export interface Peca {
@@ -14,12 +14,14 @@ export interface Peca {
     valorCusto?: number; 
     dataAquisicao?: string;
     
-    precoVenda: number;
+    precoVenda?: number;
     status: StatusPeca;
     dataStatusAtual: Date;
     
     corPrincipal: string;
     descricao?: string;
+
+    brechoParceiro?: string;
 }
 
 // eslint-disable-next-line
@@ -35,10 +37,11 @@ let inventario: Peca[] = [
         valorCusto: 45.00,
         dataAquisicao: '2025-09-01',
         precoVenda: 120.00,
-        status: 'À Venda',
+        status: 'Em Consignação',
         dataStatusAtual: new Date(),
         corPrincipal: 'Azul',
-        descricao: "Vestido de tecido leve, ideal para o verão."
+        descricao: "Aguardando reparo na costura da barra.", 
+        brechoParceiro: "Peca Rara"
     },
 ];
 
