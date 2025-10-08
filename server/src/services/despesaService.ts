@@ -4,17 +4,20 @@ import { FindManyOptions } from 'typeorm';
 
 const despesaRepository = AppDataSource.getRepository(Despesa);
 
-// Função para buscar todas as despesas (RF.ADM.09)
 export const getAllDespesas = async (): Promise<Despesa[]> => {
     const options: FindManyOptions<Despesa> = {
-        order: { data: "DESC", id: "DESC" } // Ordena por data (mais recente primeiro)
+        order: { data: "DESC", id: "DESC" }
     };
     return despesaRepository.find(options);
 };
 
-// Função para adicionar nova despesa (RF.ADM.09)
 export const addDespesa = async (novaDespesaData: Omit<Despesa, 'id'>): Promise<Despesa> => {
     const novaDespesa = despesaRepository.create(novaDespesaData);
     await despesaRepository.save(novaDespesa);
     return novaDespesa;
 };
+
+export const deleteDespesa = async (id: number): Promise<boolean> => {
+    const result = await despesaRepository.delete(id);
+    return result.affected !== undefined && result.affected !== null && result.affected > 0;
+}

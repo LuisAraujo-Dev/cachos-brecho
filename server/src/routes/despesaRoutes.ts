@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getAllDespesas, addDespesa } from '../services/despesaService';
+import { getAllDespesas, addDespesa, deleteDespesa } from '../services/despesaService';
 
 const router = Router();
 
@@ -20,6 +20,27 @@ router.post('/', (req, res) => {
     } catch (error) {
         console.error('Erro ao adicionar nova despesa:', error);
         res.status(500).json({ error: 'Erro interno ao cadastrar despesa.' });
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    const id = parseInt(req.params.id, 10);
+
+    if (isNaN(id)) {
+        return res.status(400).json({ error: 'ID da despesa inválido.' });
+    }
+
+    try {
+        const deleted = await deleteDespesa(id);
+        
+        if (deleted) {
+            return res.status(200).json({ message: 'Despesa excluída com sucesso.' });
+        } else {
+            return res.status(404).json({ error: 'Despesa não encontrada.' });
+        }
+    } catch (error) {
+        console.error('Erro ao excluir despesa:', error);
+        res.status(500).json({ error: 'Erro interno ao excluir despesa.' });
     }
 });
 
