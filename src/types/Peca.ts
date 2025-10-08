@@ -1,4 +1,4 @@
-export type StatusPeca = 'Doação' | 'Reparo' | 'Limpeza' | 'Em Estoque' | 'À Venda' | 'Vendida' | 'Perdida' | 'Devolução';
+export type StatusPeca = 'Limpeza' | 'Reparo' | 'Pronta p/ Consignação' | 'Em Consignação' | 'Vendida' | 'Perdida' | 'Devolução';
 export type OrigemPeca = 'Compra' | 'Doação' | 'Própria';
 
 export interface Peca {
