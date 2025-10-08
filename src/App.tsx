@@ -1,10 +1,10 @@
-import CadastroPeca from './pages/Dashboard/CadastroPeca';
-import './globals.css';
+import Calendario from './pages/Dashboard/Eventos/Calendario';
+import './globals.css'; 
 
 function App() {
   return (
     <div className="min-h-screen py-10"> 
-        <CadastroPeca />
+        <Calendario /> 
     </div>
   );
 }
