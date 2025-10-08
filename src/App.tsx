@@ -1,11 +1,9 @@
-import Calendario from './pages/Dashboard/Eventos/Calendario';
+import AdminLayout from './pages/Dashboard/AdminLayout';
 import './globals.css'; 
 
 function App() {
   return (
-    <div className="min-h-screen py-10"> 
-        <Calendario /> 
-    </div>
+    <AdminLayout /> 
   );
 }
 
