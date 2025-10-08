@@ -4,6 +4,7 @@ export interface Evento {
     data: string; // YYYY-MM-DD
     local: string; 
     observacoes?: string;
+    horario: string;
 }
 
 export interface EventoForm {
@@ -11,4 +12,5 @@ export interface EventoForm {
     data: string;
     local: string; 
     observacoes: string;
+    horario: string; 
 }

@@ -1,10 +1,10 @@
-// src/pages/Dashboard/Eventos/CadastroEvento.tsx
 import React, { useState } from 'react';
 import type { EventoForm } from '../../../types/Evento';
 
 const INITIAL_FORM_STATE: EventoForm = {
     nome: '',
     data: '',
+    horario: '', 
     local: '',
     observacoes: '',
 };
@@ -19,7 +19,7 @@ const CadastroEvento: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Evento a ser cadastrado na API (RF.ADM.17):', formData);
+        console.log('Evento a ser cadastrado na API (Com Horário):', formData);
         // TODO: Chamada POST para /api/eventos
         setFormData(INITIAL_FORM_STATE); 
     };
@@ -31,15 +31,21 @@ const CadastroEvento: React.FC = () => {
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 
+                <div>
+                    <label className="block text-sm font-medium mb-1">Nome do Bazar/Evento</label>
+                    <input type="text" name="nome" value={formData.nome} onChange={handleChange} required
+                        className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
+                </div>
+
                 <div className="grid grid-cols-2 gap-4">
-                    <div>
-                        <label className="block text-sm font-medium mb-1">Nome do Bazar/Evento</label>
-                        <input type="text" name="nome" value={formData.nome} onChange={handleChange} required
-                            className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
-                    </div>
                     <div>
                         <label className="block text-sm font-medium mb-1">Data</label>
                         <input type="date" name="data" value={formData.data} onChange={handleChange} required
+                            className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium mb-1">Horário</label>
+                        <input type="time" name="horario" value={formData.horario} onChange={handleChange} required
                             className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
                     </div>
                 </div>
