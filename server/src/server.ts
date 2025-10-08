@@ -3,6 +3,7 @@ import cors from 'cors'
 import marcaRoutes from './routes/marcaRoutes'; 
 import pecaRoutes from './routes/pecaRoutes';
 import eventoRoutes from './routes/eventoRoutes'
+import despesaRoutes from './routes/despesaRoutes';
 
 const app = express();
 const PORT = 3000;
@@ -22,6 +23,8 @@ app.get('/', (req, res) => {
 app.use('/api/marcas', marcaRoutes); 
 app.use('/api/pecas', pecaRoutes);
 app.use('/api/eventos', eventoRoutes);
+app.use('/api/despesas', despesaRoutes); 
+
 
 app.listen(PORT, () => {
     console.log(`[Server] API rodando em http://localhost:${PORT}`);

@@ -3,12 +3,14 @@ import Inventario from '../Dashboard/Inventario';
 import CadastroPeca from '../Dashboard/CadastroPeca';
 import Calendario from '../Dashboard/Eventos/Calendario';
 import DashboardPrincipal from './DashboardPrincipal';
-import { LayoutDashboard, Package, Calendar, Settings, DollarSign, BarChart3 } from 'lucide-react';
+import ControleDespesas from './Financas/ControleDespesas'; 
+import { LayoutDashboard, Package, Calendar, Settings, DollarSign, BarChart3, Receipt } from 'lucide-react'; 
 
 const pages = {
     dashboard: { component: DashboardPrincipal, name: 'Dashboard Geral', icon: LayoutDashboard },
     inventario: { component: Inventario, name: 'Banco de Peças', icon: Package },
     cadastro: { component: CadastroPeca, name: 'Novo Cadastro', icon: DollarSign },
+    despesas: { component: ControleDespesas, name: 'Controle de Despesas', icon: Receipt },
     calendario: { component: Calendario, name: 'Calendário Bazares', icon: Calendar },
     relatorios: { component: () => <div className="p-10">Relatórios Financeiros (Futuro)</div>, name: 'Relatórios', icon: BarChart3 },
     config: { component: () => <div className="p-10">Configurações (Futuro)</div>, name: 'Configurações', icon: Settings },
