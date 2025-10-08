@@ -1,30 +1,20 @@
-// src/services/despesaService.ts
+import { AppDataSource } from '../data-source';
+import { Despesa } from '../entities/Despesa'; 
+import { FindManyOptions } from 'typeorm';
 
-export type CategoriaDespesa = 'Limpeza' | 'Reparo' | 'Envio' | 'Embalagem' | 'Marketing' | 'Fixo' | 'Outros';
+const despesaRepository = AppDataSource.getRepository(Despesa);
 
-export interface Despesa {
-    id: number;
-    data: string; // YYYY-MM-DD
-    valor: number;
-    descricao: string;
-    categoria: CategoriaDespesa;
-}
-// eslint-disable-next-line
-let despesas: Despesa[] = [
-    { id: 1, data: '2025-10-01', valor: 15.50, descricao: 'Sabão e amaciante', categoria: 'Limpeza' },
-    { id: 2, data: '2025-10-05', valor: 30.00, descricao: 'Etiquetas de envio', categoria: 'Embalagem' },
-];
-let nextDespesaId = 3;
-
-export const getAllDespesas = (): Despesa[] => {
-    return despesas;
+// Função para buscar todas as despesas (RF.ADM.09)
+export const getAllDespesas = async (): Promise<Despesa[]> => {
+    const options: FindManyOptions<Despesa> = {
+        order: { data: "DESC", id: "DESC" } // Ordena por data (mais recente primeiro)
+    };
+    return despesaRepository.find(options);
 };
 
-export const addDespesa = (novaDespesaData: Omit<Despesa, 'id'>): Despesa => {
-    const novaDespesa: Despesa = {
-        id: nextDespesaId++,
-        ...novaDespesaData,
-    };
-    despesas.push(novaDespesa);
+// Função para adicionar nova despesa (RF.ADM.09)
+export const addDespesa = async (novaDespesaData: Omit<Despesa, 'id'>): Promise<Despesa> => {
+    const novaDespesa = despesaRepository.create(novaDespesaData);
+    await despesaRepository.save(novaDespesa);
     return novaDespesa;
 };
