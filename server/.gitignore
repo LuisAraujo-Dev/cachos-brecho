@@ -1,0 +1,7 @@
+# Dependências
+/node_modules
+# Pasta de Build
+/dist
+
+# Variáveis de Ambiente
+.env
