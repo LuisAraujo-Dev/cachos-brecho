@@ -1,6 +1,11 @@
 export type StatusPeca = 'Limpeza' | 'Reparo' | 'Pronta p/ Consignação' | 'Em Consignação' | 'Vendida' | 'Perdida' | 'Devolução';
 export type OrigemPeca = 'Compra' | 'Doação' | 'Própria';
 
+export interface Marca {
+    id: number;
+    nome: string;
+}
+
 export interface Peca {
     id: number;
     nome: string;
@@ -22,6 +27,8 @@ export interface Peca {
     descricao?: string;
 
     brechoParceiro?: string;
+
+    marca?: Marca;
 }
 
 export interface PecaForm {

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { useFetchData, postData } from '../../../utils/api';
-import { PlusCircle, TrendingDown, } from 'lucide-react';
+import { useFetchData, postData, deleteData } from '../../../utils/api';
+import { PlusCircle, TrendingDown, Trash2 } from 'lucide-react';
 import type { CategoriaDespesa, DespesaForm, Despesa } from '../../../types/Despesa';
 
 const CATEGORIAS: CategoriaDespesa[] = ['Limpeza', 'Reparo', 'Envio', 'Embalagem', 'Marketing', 'Fixo', 'Outros'];
@@ -16,11 +16,13 @@ const formatCurrency = (value: number) => value.toLocaleString('pt-BR', { style:
 
 const ControleDespesas: React.FC = () => {
     const { data: despesas, loading, error, refresh } = useFetchData<Despesa[]>('despesas');
+
     const despesasList: Despesa[] = useMemo(() => despesas || [], [despesas]);
+
     const [formData, setFormData] = useState<DespesaForm>(INITIAL_FORM_STATE);
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
-
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -49,9 +51,24 @@ const ControleDespesas: React.FC = () => {
             setIsLoading(false);
         }
     };
+    
+    const handleDelete = async (id: number) => {
+        if (!window.confirm("Tem certeza que deseja excluir esta despesa? Esta ação é irreversível.")) {
+            return;
+        }
+
+        try {
+            await deleteData('despesas', id);
+            setMessage({ type: 'success', text: 'Despesa excluída com sucesso.' });
+            refresh();
+        } catch (error) {
+            setMessage({ type: 'error', text: 'Falha ao excluir despesa.' });
+            console.error(error);
+        }
+    };
 
     const totalDespesas = useMemo(() => {
-        return despesasList.reduce((acc, d) => acc + d.valor, 0); 
+        return despesasList.reduce((acc, d) => acc + d.valor, 0);
     }, [despesasList]);
 
 
@@ -63,9 +80,9 @@ const ControleDespesas: React.FC = () => {
             <h1 className="text-4xl font-extrabold text-cachos-castanho mb-6">
                 Controle de Despesas Operacionais
             </h1>
-
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
+                
                 <div className="md:col-span-1">
                     <div className="p-6 bg-white shadow-xl rounded-xl border-l-4 border-cachos-dourado">
                         <h2 className="text-2xl font-semibold text-cachos-castanho mb-4 flex items-center space-x-2">
@@ -83,7 +100,7 @@ const ControleDespesas: React.FC = () => {
                                 <input type="number" name="valor" value={formData.valor} onChange={handleChange} required
                                     className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
                             </div>
-                            <div>
+                             <div>
                                 <label className="block text-sm font-medium mb-1">Data</label>
                                 <input type="date" name="data" value={formData.data} onChange={handleChange} required
                                     className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
@@ -108,7 +125,7 @@ const ControleDespesas: React.FC = () => {
                         </form>
                     </div>
                 </div>
-
+                
                 <div className="md:col-span-2">
                     <div className="bg-white p-6 rounded-xl shadow-lg">
                         <div className="flex justify-between items-center mb-4 border-b pb-3">
@@ -127,19 +144,29 @@ const ControleDespesas: React.FC = () => {
                                         <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Categoria</th>
                                         <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Valor</th>
                                         <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Descrição</th>
+                                        <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
                                     {despesasList.slice(0).reverse().map((d) => (
                                         <tr key={d.id}>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">{d.data}</td>
-                                            <td className-="px-4 py-2 whitespace-nowrap text-sm">
+                                            <td className="px-4 py-2 whitespace-nowrap text-sm">
                                                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-cachos-dourado/20 text-cachos-castanho">
                                                     {d.categoria}
                                                 </span>
                                             </td>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm text-red-500 font-medium">{formatCurrency(d.valor)}</td>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">{d.descricao}</td>
+                                            <td className="px-4 py-2 whitespace-nowrap text-sm">
+                                                <button 
+                                                    onClick={() => handleDelete(d.id)}
+                                                    title="Excluir Despesa"
+                                                    className="text-red-500 hover:text-red-700 transition"
+                                                >
+                                                    <Trash2 size={16} />
+                                                </button>
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>

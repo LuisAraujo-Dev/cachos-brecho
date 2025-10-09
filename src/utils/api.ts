@@ -54,3 +54,17 @@ export const useFetchData = <T>(endpoint: string) => {
 
     return { data, loading, error, refresh: fetchData };
 };
+
+export async function deleteData(endpoint: string, id: number): Promise<void> {
+    const response = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || `Erro HTTP: ${response.status}`);
+    }
+}
