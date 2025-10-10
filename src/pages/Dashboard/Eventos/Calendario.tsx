@@ -29,13 +29,13 @@ const Calendario: React.FC = () => {
                         <h2 className="text-2xl font-semibold text-[var(--color-castanho)]">
                             Próximos Bazares ({eventosList.length} Eventos)
                         </h2>
-                        <button onClick={refresh} title="Atualizar Lista" className="text-sm text-cachos-dourado hover:text-[var(--color-castanho)]">
+                        <button onClick={refresh} title="Atualizar Lista" className="text-sm text-[var(--color-dourado)] hover:text-[var(--color-castanho)]">
                             <RefreshCw size={18} />
                         </button>
                     </div>
                     
                     {!loading && eventosList.length === 0 && (
-                        <div className="text-center p-10 text-gray-500 bg-cachos-creme/50 rounded-lg">
+                        <div className="text-center p-10 text-gray-500 bg-[var(--color-creme)]/50 rounded-lg">
                             Nenhum bazar agendado. Use o formulário ao lado para começar o planejamento!
                         </div>
                     )}
@@ -46,9 +46,9 @@ const Calendario: React.FC = () => {
                                 <p className="font-bold text-lg text-[var(--color-castanho)]">{evento.nome}</p>
                                 <div className="text-sm text-gray-600 space-y-1 mt-1">
                                     <p className="flex items-center space-x-2">
-                                        <CalendarIcon size={16} className="text-cachos-dourado" />
+                                        <CalendarIcon size={16} className="text-[var(--color-dourado)]" />
                                         <span>{evento.data}</span>
-                                        <Clock size={16} className="text-cachos-dourado ml-4" />
+                                        <Clock size={16} className="text-[var(--color-dourado)] ml-4" />
                                         <span>{evento.horario}</span>
                                     </p>
                                     <p className="flex items-center space-x-2">

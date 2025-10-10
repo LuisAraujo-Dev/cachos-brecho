@@ -82,7 +82,7 @@ const ControleDespesas: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                 <div className="md:col-span-1">
-                    <div className="p-6 bg-white shadow-xl rounded-xl border-l-4 border-cachos-dourado">
+                    <div className="p-6 bg-white shadow-xl rounded-xl border-l-4 border-[var(--color-dourado)]">
                         <h2 className="text-2xl font-semibold text-[var(--color-castanho)] mb-4 flex items-center space-x-2">
                             <PlusCircle size={20} />
                             <span>Nova Despesa</span>
@@ -96,17 +96,17 @@ const ControleDespesas: React.FC = () => {
                             <div>
                                 <label className="block text-sm font-medium mb-1">Valor (R$)</label>
                                 <input type="number" name="valor" value={formData.valor} onChange={handleChange} required
-                                    className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
+                                    className="w-full p-2 border border-gray-300 rounded-md focus:border-[var(--color-dourado)]" />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium mb-1">Data</label>
                                 <input type="date" name="data" value={formData.data} onChange={handleChange} required
-                                    className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
+                                    className="w-full p-2 border border-gray-300 rounded-md focus:border-[var(--color-dourado)]" />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium mb-1">Categoria</label>
                                 <select name="categoria" value={formData.categoria} onChange={handleChange} required
-                                    className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado">
+                                    className="w-full p-2 border border-gray-300 rounded-md focus:border-[var(--color-dourado)]">
                                     <option value="" disabled>Selecione a Categoria</option>
                                     {CATEGORIAS.map(cat => <option key={cat} value={cat}>{cat}</option>)}
                                 </select>
@@ -114,7 +114,7 @@ const ControleDespesas: React.FC = () => {
                             <div>
                                 <label className="block text-sm font-medium mb-1">Descrição</label>
                                 <textarea name="descricao" value={formData.descricao} onChange={handleChange} rows={2}
-                                    className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
+                                    className="w-full p-2 border border-gray-300 rounded-md focus:border-[var(--color-dourado)]" />
                             </div>
                             <button type="submit" disabled={isLoading}
                                 className={`w-full py-2 font-bold rounded-md transition duration-300 ${isLoading ? 'bg-gray-400' : 'bg-red-500 hover:bg-red-600 text-white'}`}>
@@ -136,7 +136,7 @@ const ControleDespesas: React.FC = () => {
 
                         <div className="h-96 overflow-y-auto">
                             <table className="min-w-full divide-y divide-gray-200">
-                                <thead className="bg-cachos-creme sticky top-0">
+                                <thead className="bg-[var(--color-creme)] sticky top-0">
                                     <tr>
                                         <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Data</th>
                                         <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Categoria</th>
@@ -150,7 +150,7 @@ const ControleDespesas: React.FC = () => {
                                         <tr key={d.id}>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">{d.data}</td>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm">
-                                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-cachos-dourado/20 text-[var(--color-castanho)]">
+                                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[var(--color-dourado)]/20 text-[var(--color-castanho)]">
                                                     {d.categoria}
                                                 </span>
                                             </td>

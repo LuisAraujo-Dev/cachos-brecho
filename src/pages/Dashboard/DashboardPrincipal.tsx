@@ -53,7 +53,7 @@ const DashboardPrincipal: React.FC = () => {
                     <p className="text-xs text-gray-500 mt-2">Prontas para Consignação/Em Venda</p>
                 </div>
                 
-                <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-cachos-dourado">
+                <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-[var(--color-dourado)]">
                     <p className="text-sm font-medium text-gray-500 flex items-center space-x-2"><Calendar size={16} /> EM PROCESSO</p>
                     <p className="text-3xl font-bold text-[var(--color-castanho)] mt-1">{totalPecasProcessamento}</p>
                     <p className="text-xs text-gray-500 mt-2">Aguardando Limpeza ou Reparo</p>

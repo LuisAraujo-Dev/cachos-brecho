@@ -70,32 +70,32 @@ const CadastroEvento: React.FC<CadastroEventoProps> = ({ onEventCreated }) => {
                 <div>
                     <label className="block text-sm font-medium mb-1">Nome do Bazar/Evento</label>
                     <input type="text" name="nome" value={formData.nome} onChange={handleChange} required
-                        className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
+                        className="w-full p-2 border border-gray-300 rounded-md focus:border-[var(--color-dourado)]" />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <label className="block text-sm font-medium mb-1">Data</label>
                         <input type="date" name="data" value={formData.data} onChange={handleChange} required
-                            className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
+                            className="w-full p-2 border border-gray-300 rounded-md focus:border-[var(--color-dourado)]" />
                     </div>
                     <div>
                         <label className="block text-sm font-medium mb-1">Horário</label>
                         <input type="time" name="horario" value={formData.horario} onChange={handleChange} required
-                            className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
+                            className="w-full p-2 border border-gray-300 rounded-md focus:border-[var(--color-dourado)]" />
                     </div>
                 </div>
 
                 <div>
                     <label className="block text-sm font-medium mb-1">Local/Endereço</label>
                     <input type="text" name="local" value={formData.local} onChange={handleChange} required
-                        className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
+                        className="w-full p-2 border border-gray-300 rounded-md focus:border-[var(--color-dourado)]" />
                 </div>
 
                 <div>
                     <label className="block text-sm font-medium mb-1">Observações (Metas de compra, etc.)</label>
                     <textarea name="observacoes" value={formData.observacoes} onChange={handleChange} rows={2}
-                        className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
+                        className="w-full p-2 border border-gray-300 rounded-md focus:border-[var(--color-dourado)]" />
                 </div>
 
                 <button

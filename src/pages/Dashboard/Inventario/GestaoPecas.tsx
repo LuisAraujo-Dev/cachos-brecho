@@ -59,7 +59,7 @@ const GestaoPecas: React.FC = () => {
             <div className="bg-white p-6 rounded-xl shadow-lg">
                 <div className="overflow-x-auto">
                     <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-cachos-creme sticky top-0">
+                        <thead className="bg-[var(--color-creme)] sticky top-0">
                             <tr>
                                 <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
                                 <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Nome</th>
@@ -89,7 +89,7 @@ const GestaoPecas: React.FC = () => {
                                         <button 
                                             onClick={() => handleEdit(p)}
                                             title="Editar Peça"
-                                            className="text-cachos-dourado hover:text-[var(--color-castanho)] transition"
+                                            className="text-[var(--color-dourado)] hover:text-[var(--color-castanho)] transition"
                                         >
                                             <Edit size={16} />
                                         </button>

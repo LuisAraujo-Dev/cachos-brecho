@@ -120,7 +120,7 @@ const ModalEdicaoPeca: React.FC<ModalProps> = ({ peca, onClose, onSave, todasMar
                          <div>
                             <label className="block text-sm font-medium mb-1">Status (RF.ADM.05)</label>
                             <select name="status" value={formData.status} onChange={handleChange} required
-                                className="w-full p-2 border rounded-md bg-cachos-dourado/20">
+                                className="w-full p-2 border rounded-md bg-[var(--color-dourado)]/20">
                                 {OPCOES_STATUS.map(status => (
                                     <option key={status} value={status}>{status}</option>
                                 ))}

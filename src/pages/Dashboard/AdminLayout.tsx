@@ -49,8 +49,8 @@ const AdminLayout: React.FC = () => {
                 onClick={handleClick}
                 className={`flex items-center space-x-3 py-3 px-4 rounded-lg w-full transition-colors duration-200 ${
                     currentPageKey === page 
-                        ? 'bg-cachos-dourado text-[var(--color-castanho)] font-semibold'
-                        : 'text-gray-600 hover:bg-cachos-creme hover:text-[var(--color-castanho)]'
+                        ? 'bg-[var(--color-dourado)] text-[var(--color-castanho)] font-semibold'
+                        : 'text-gray-600 hover:bg-[var(--color-creme)] hover:text-[var(--color-castanho)]'
                 }`}
             >
                 <Icon size={20} />
@@ -60,7 +60,7 @@ const AdminLayout: React.FC = () => {
     };
 
     return (
-        <div className="flex min-h-screen bg-cachos-creme">
+        <div className="flex min-h-screen bg-[var(--color-creme)]">
             
             <aside className="w-64 bg-white shadow-xl p-6 flex flex-col justify-between border-r border-gray-100">
                 <nav className="space-y-2">
@@ -76,7 +76,7 @@ const AdminLayout: React.FC = () => {
             </aside>
             
             <main className="flex-1 overflow-y-auto">
-                <div className="bg-cachos-creme min-h-full">
+                <div className="bg-[var(--color-creme)] min-h-full">
                     <ActiveComponent /> 
                 </div>
             </main>

@@ -13,12 +13,12 @@ const DicasCard: React.FC<{ title: string, icon: React.ElementType, content: str
 
 const GaleriaInspiracao: React.FC = () => {
     return (
-        <div className="min-h-screen bg-cachos-creme pt-10">
+        <div className="min-h-screen bg-[var(--color-creme)] pt-10">
             <div className="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-xl">
-                <Link to="/" className="text-cachos-dourado hover:text-[var(--color-castanho)] mb-4 inline-flex items-center space-x-1">
+                <Link to="/" className="text-[var(--color-dourado)] hover:text-[var(--color-castanho)] mb-4 inline-flex items-center space-x-1">
                     &larr; Voltar para a Vitrine
                 </Link>
-                <h1 className="text-4xl font-extrabold text-[var(--color-castanho)] mb-6 border-b-2 border-cachos-dourado pb-3">
+                <h1 className="text-4xl font-extrabold text-[var(--color-castanho)] mb-6 border-b-2 border-[var(--color-dourado)] pb-3">
                     Galeria de Inspiração & Dicas de Cuidado (RF.VIT.05)
                 </h1>
                 <p className="text-lg text-gray-600 mb-8">

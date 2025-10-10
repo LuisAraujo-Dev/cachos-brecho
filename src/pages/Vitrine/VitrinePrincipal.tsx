@@ -30,7 +30,7 @@ const VitrinePrincipal: React.FC = () => {
     if (error) return <div className="text-center p-10 text-red-600 bg-red-100 rounded-lg">Erro ao carregar a vitrine.</div>;
 
     return (
-        <div className="min-h-screen bg-cachos-creme">
+        <div className="min-h-screen bg-[var(--color-creme)]">
             
             <header className="bg-white shadow-md sticky top-0 z-10">
                 <div className="max-w-7xl mx-auto p-6 flex justify-between items-center">
@@ -44,7 +44,7 @@ const VitrinePrincipal: React.FC = () => {
                             placeholder="Buscar vestidos, calças, azul..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full p-2 pl-10 border border-gray-300 rounded-l-md focus:ring-cachos-dourado focus:border-cachos-dourado"
+                            className="w-full p-2 pl-10 border border-gray-300 rounded-l-md focus:ring-[var(--color-dourado)] focus:border-[var(--color-dourado)]"
                         />
                         <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                         <button onClick={refresh} className="p-2 bg-gray-100 border border-gray-300 rounded-r-md hover:bg-gray-200">

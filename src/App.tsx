@@ -22,8 +22,8 @@ const LoginAdmin: React.FC = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-cachos-creme">
-            <div className="p-8 bg-white shadow-xl rounded-lg border-t-4 border-cachos-dourado w-80">
+        <div className="flex items-center justify-center min-h-screen bg-[var(--color-creme)]">
+            <div className="p-8 bg-white shadow-xl rounded-lg border-t-4 border-[var(--color-dourado)] w-80">
                 <h2 className="text-2xl font-bold text-[var(--color-castanho)] mb-6 text-center">Acesso Administrador</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
@@ -31,12 +31,12 @@ const LoginAdmin: React.FC = () => {
                         placeholder="Digite a senha"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:border-cachos-dourado"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:border-[var(--color-dourado)]"
                         required
                     />
                     <button
                         type="submit"
-                        className="w-full py-3 bg-cachos-dourado text-[var(--color-castanho)] font-bold rounded-md hover:bg-cachos-dourado/80 transition"
+                        className="w-full py-3 bg-[var(--color-dourado)] text-[var(--color-castanho)] font-bold rounded-md hover:bg-[var(--color-dourado)]/80 transition"
                     >
                         Acessar Dashboard
                     </button>
