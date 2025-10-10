@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { Hand, WashingMachine, Shirt, Wrench } from 'lucide-react';
 
 const DicasCard: React.FC<{ title: string, icon: React.ElementType, content: string }> = ({ title, icon: Icon, content }) => (
-    <div className="bg-white p-6 rounded-xl shadow-lg border-t-4 border-cachos-salvia">
-        <Icon size={32} className="text-cachos-salvia mb-3" />
-        <h3 className="text-xl font-bold text-cachos-castanho mb-2">{title}</h3>
+    <div className="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[var(--color-salvia)]">
+        <Icon size={32} className="text-[var(--color-salvia)] mb-3" />
+        <h3 className="text-xl font-bold text-[var(--color-castanho)] mb-2">{title}</h3>
         <p className="text-gray-600 text-sm">{content}</p>
     </div>
 );
@@ -15,10 +15,10 @@ const GaleriaInspiracao: React.FC = () => {
     return (
         <div className="min-h-screen bg-cachos-creme pt-10">
             <div className="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-xl">
-                <Link to="/" className="text-cachos-dourado hover:text-cachos-castanho mb-4 inline-flex items-center space-x-1">
+                <Link to="/" className="text-cachos-dourado hover:text-[var(--color-castanho)] mb-4 inline-flex items-center space-x-1">
                     &larr; Voltar para a Vitrine
                 </Link>
-                <h1 className="text-4xl font-extrabold text-cachos-castanho mb-6 border-b-2 border-cachos-dourado pb-3">
+                <h1 className="text-4xl font-extrabold text-[var(--color-castanho)] mb-6 border-b-2 border-cachos-dourado pb-3">
                     Galeria de Inspiração & Dicas de Cuidado (RF.VIT.05)
                 </h1>
                 <p className="text-lg text-gray-600 mb-8">

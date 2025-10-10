@@ -13,7 +13,7 @@ const DashboardPrincipal: React.FC = () => {
     
     const metrics = pecas ? calculateMetrics(pecas) : null;
 
-    if (loading) return <div className="text-center p-10 text-cachos-castanho">Carregando Dashboard...</div>;
+    if (loading) return <div className="text-center p-10 text-[var(--color-castanho)]">Carregando Dashboard...</div>;
     if (error) return <div className="text-center p-10 text-red-600 bg-red-100 rounded-lg">{error}</div>;
     if (!metrics) return <div className="text-center p-10 text-gray-500">Nenhum dado encontrado para o Dashboard.</div>;
 
@@ -22,7 +22,7 @@ const DashboardPrincipal: React.FC = () => {
 
     return (
         <div className="p-8">
-            <h1 className="text-4xl font-extrabold text-cachos-castanho mb-6">
+            <h1 className="text-4xl font-extrabold text-[var(--color-castanho)] mb-6">
                 Dashboard Geral
             </h1>
             <p className="text-lg text-gray-600 mb-8">
@@ -47,15 +47,15 @@ const DashboardPrincipal: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-cachos-salvia">
+                <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border[var(--color-salvia)]">
                     <p className="text-sm font-medium text-gray-500 flex items-center space-x-2"><Package size={16} /> PEÇAS ATIVAS</p>
-                    <p className="text-3xl font-bold text-cachos-castanho mt-1">{totalPecasProntas}</p>
+                    <p className="text-3xl font-bold text-[var(--color-castanho)] mt-1">{totalPecasProntas}</p>
                     <p className="text-xs text-gray-500 mt-2">Prontas para Consignação/Em Venda</p>
                 </div>
                 
                 <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-cachos-dourado">
                     <p className="text-sm font-medium text-gray-500 flex items-center space-x-2"><Calendar size={16} /> EM PROCESSO</p>
-                    <p className="text-3xl font-bold text-cachos-castanho mt-1">{totalPecasProcessamento}</p>
+                    <p className="text-3xl font-bold text-[var(--color-castanho)] mt-1">{totalPecasProcessamento}</p>
                     <p className="text-xs text-gray-500 mt-2">Aguardando Limpeza ou Reparo</p>
                 </div>
                 

@@ -99,7 +99,7 @@ const ModalEdicaoPeca: React.FC<ModalProps> = ({ peca, onClose, onSave, todasMar
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
                 <div className="flex justify-between items-center mb-6 border-b pb-3">
-                    <h2 className="text-2xl font-bold text-cachos-castanho">
+                    <h2 className="text-2xl font-bold text[var(--color-castanho)]">
                         Editar Peça #{peca.id} - {peca.nome}
                     </h2>
                     <button onClick={onClose} className="text-gray-500 hover:text-gray-900 text-3xl">&times;</button>
@@ -182,7 +182,7 @@ const ModalEdicaoPeca: React.FC<ModalProps> = ({ peca, onClose, onSave, todasMar
                         </button>
                         <button type="submit" disabled={isLoading}
                             className={`py-2 px-4 rounded-md text-white font-bold transition ${
-                                isLoading ? 'bg-gray-400' : 'bg-cachos-salvia hover:bg-cachos-salvia/90'
+                                isLoading ? 'bg-gray-400' : 'bg-[var(--color-salvia)] hover:bg-[var(--color-salvia)90]'
                             }`}>
                             {isLoading ? 'Salvando...' : 'Salvar Alterações'}
                         </button>

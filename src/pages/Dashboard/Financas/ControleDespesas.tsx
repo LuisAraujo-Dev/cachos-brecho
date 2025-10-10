@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { useFetchData, postData, deleteData } from '../../../utils/api';
 import { PlusCircle, TrendingDown, Trash2 } from 'lucide-react';
 import type { CategoriaDespesa, DespesaForm, Despesa } from '../../../types/Despesa';
-
 const CATEGORIAS: CategoriaDespesa[] = ['Limpeza', 'Reparo', 'Envio', 'Embalagem', 'Marketing', 'Fixo', 'Outros'];
 
 const INITIAL_FORM_STATE: DespesaForm = {
@@ -17,12 +16,12 @@ const formatCurrency = (value: number) => value.toLocaleString('pt-BR', { style:
 const ControleDespesas: React.FC = () => {
     const { data: despesas, loading, error, refresh } = useFetchData<Despesa[]>('despesas');
 
-    const despesasList: Despesa[] = useMemo(() => despesas || [], [despesas]);
+    const despesasList: Despesa[] = useMemo(() => (despesas && Array.isArray(despesas) ? despesas : []), [despesas]); 
 
     const [formData, setFormData] = useState<DespesaForm>(INITIAL_FORM_STATE);
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
-    
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -51,7 +50,7 @@ const ControleDespesas: React.FC = () => {
             setIsLoading(false);
         }
     };
-    
+
     const handleDelete = async (id: number) => {
         if (!window.confirm("Tem certeza que deseja excluir esta despesa? Esta ação é irreversível.")) {
             return;
@@ -68,24 +67,23 @@ const ControleDespesas: React.FC = () => {
     };
 
     const totalDespesas = useMemo(() => {
-        return despesasList.reduce((acc, d) => acc + d.valor, 0);
-    }, [despesasList]);
+        return despesasList.reduce((acc, d) => acc + d.valor, 0); 
+    }, [despesasList]); 
 
-
-    if (loading) return <div className="text-center p-10 text-cachos-castanho">Carregando Controle Financeiro...</div>;
+    if (loading) return <div className="text-center p-10 text-[var(--color-castanho)]">Carregando Controle Financeiro...</div>;
     if (error) return <div className="text-center p-10 text-red-600 bg-red-100 rounded-lg">{error}</div>;
 
     return (
         <div className="p-8 max-w-7xl mx-auto">
-            <h1 className="text-4xl font-extrabold text-cachos-castanho mb-6">
+            <h1 className="text-4xl font-extrabold text-[var(--color-castanho)] mb-6">
                 Controle de Despesas Operacionais
             </h1>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
+
                 <div className="md:col-span-1">
                     <div className="p-6 bg-white shadow-xl rounded-xl border-l-4 border-cachos-dourado">
-                        <h2 className="text-2xl font-semibold text-cachos-castanho mb-4 flex items-center space-x-2">
+                        <h2 className="text-2xl font-semibold text-[var(--color-castanho)] mb-4 flex items-center space-x-2">
                             <PlusCircle size={20} />
                             <span>Nova Despesa</span>
                         </h2>
@@ -100,7 +98,7 @@ const ControleDespesas: React.FC = () => {
                                 <input type="number" name="valor" value={formData.valor} onChange={handleChange} required
                                     className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
                             </div>
-                             <div>
+                            <div>
                                 <label className="block text-sm font-medium mb-1">Data</label>
                                 <input type="date" name="data" value={formData.data} onChange={handleChange} required
                                     className="w-full p-2 border border-gray-300 rounded-md focus:border-cachos-dourado" />
@@ -125,11 +123,11 @@ const ControleDespesas: React.FC = () => {
                         </form>
                     </div>
                 </div>
-                
+
                 <div className="md:col-span-2">
                     <div className="bg-white p-6 rounded-xl shadow-lg">
                         <div className="flex justify-between items-center mb-4 border-b pb-3">
-                            <h2 className="text-2xl font-semibold text-cachos-castanho flex items-center space-x-2">
+                            <h2 className="text-2xl font-semibold text-[var(--color-castanho)] flex items-center space-x-2">
                                 <TrendingDown size={24} className="text-red-500" />
                                 <span>Gastos Registrados</span>
                             </h2>
@@ -152,14 +150,14 @@ const ControleDespesas: React.FC = () => {
                                         <tr key={d.id}>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">{d.data}</td>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm">
-                                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-cachos-dourado/20 text-cachos-castanho">
+                                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-cachos-dourado/20 text-[var(--color-castanho)]">
                                                     {d.categoria}
                                                 </span>
                                             </td>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm text-red-500 font-medium">{formatCurrency(d.valor)}</td>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">{d.descricao}</td>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm">
-                                                <button 
+                                                <button
                                                     onClick={() => handleDelete(d.id)}
                                                     title="Excluir Despesa"
                                                     className="text-red-500 hover:text-red-700 transition"

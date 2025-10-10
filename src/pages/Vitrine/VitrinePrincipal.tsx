@@ -26,7 +26,7 @@ const VitrinePrincipal: React.FC = () => {
         window.open(whatsappUrl, '_blank');
     };
 
-    if (loading) return <div className="text-center p-10 text-cachos-castanho">Carregando Vitrine...</div>;
+    if (loading) return <div className="text-center p-10 text-[var(--color-castanho)]">Carregando Vitrine...</div>;
     if (error) return <div className="text-center p-10 text-red-600 bg-red-100 rounded-lg">Erro ao carregar a vitrine.</div>;
 
     return (
@@ -34,8 +34,8 @@ const VitrinePrincipal: React.FC = () => {
             
             <header className="bg-white shadow-md sticky top-0 z-10">
                 <div className="max-w-7xl mx-auto p-6 flex justify-between items-center">
-                    <h1 className="text-3xl font-extrabold text-cachos-castanho">
-                        Cachos-Brechó <span className="text-cachos-salvia">Vitrine</span>
+                    <h1 className="text-3xl font-extrabold text-[var(--color-castanho)]">
+                        Cachos-Brechó <span className="text-[var(--color-salvia)]">Vitrine</span>
                     </h1>
                     
                     <div className="relative w-full max-w-lg flex">
@@ -48,19 +48,19 @@ const VitrinePrincipal: React.FC = () => {
                         />
                         <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                         <button onClick={refresh} className="p-2 bg-gray-100 border border-gray-300 rounded-r-md hover:bg-gray-200">
-                             <RefreshCw size={20} className="text-cachos-castanho" />
+                             <RefreshCw size={20} className="text-[var(--color-castanho)]" />
                         </button>
                     </div>
                 </div>
             </header>
             
             <div className="max-w-7xl mx-auto p-8">
-                <h2 className="text-2xl font-bold text-cachos-castanho mb-6">
+                <h2 className="text-2xl font-bold text-[var(--color-castanho)] mb-6">
                     Achados do Dia ({filteredPecas.length} Peças)
                 </h2>
 
                 {filteredPecas.length === 0 && (
-                     <div className="text-center p-20 text-gray-500 bg-white rounded-lg border border-dashed border-cachos-castanho/20">
+                     <div className="text-center p-20 text-gray-500 bg-white rounded-lg border border-dashed border-[var(--color-castanho)]/20">
                          <X size={32} className="mx-auto mb-4" />
                          <p>Nenhuma peça à venda encontrada. Volte mais tarde para garimpar!</p>
                      </div>
@@ -75,7 +75,7 @@ const VitrinePrincipal: React.FC = () => {
                             </div>
                             
                             <div className="p-4">
-                                <h3 className="text-xl font-semibold text-cachos-castanho truncate">{peca.nome}</h3>
+                                <h3 className="text-xl font-semibold text-[var(--color-castanho)] truncate">{peca.nome}</h3>
                                 <p className="text-sm text-gray-500 mb-2">{peca.corPrincipal} | Tam: {peca.tamanhoId}</p>
 
                                 <div className="text-2xl font-bold text-green-600 mb-3">
@@ -84,7 +84,7 @@ const VitrinePrincipal: React.FC = () => {
                                 
                                 <button
                                     onClick={() => handleBuyClick(peca)}
-                                    className="w-full py-2 bg-cachos-salvia text-white font-bold rounded-md flex items-center justify-center space-x-2 hover:bg-cachos-salvia/90 transition duration-200"
+                                    className="w-full py-2 bg-[var(--color-salvia)] text-white font-bold rounded-md flex items-center justify-center space-x-2 hover:bg-[var(--color-salvia)90] transition duration-200"
                                 >
                                     <ShoppingBag size={18} />
                                     <span>Tenho Interesse!</span>

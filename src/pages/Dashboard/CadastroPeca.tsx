@@ -83,7 +83,7 @@ const CadastroPeca: React.FC = () => {
 
     return (
         <div className="p-8 max-w-4xl mx-auto bg-white shadow-xl rounded-lg">
-            <h1 className="text-3xl font-bold text-cachos-castanho mb-6 border-b-2 border-cachos-dourado pb-2">
+            <h1 className="text-3xl font-bold text-[var(--color-castanho)] mb-6 border-b-2 border-cachos-dourado pb-2">
                 Cadastro de Peça (Pós-Bazar)
             </h1>
             
@@ -179,7 +179,7 @@ const CadastroPeca: React.FC = () => {
                     className={`w-full py-3 font-bold rounded-md transition duration-300 ${
                         isLoading 
                             ? 'bg-gray-400 text-gray-600 cursor-not-allowed' 
-                            : 'bg-cachos-dourado text-cachos-castanho hover:bg-cachos-dourado/80'
+                            : 'bg-cachos-dourado text-[var(--color-castanho)] hover:bg-cachos-dourado/80'
                     }`}
                     disabled={isLoading}>
                     {isLoading ? 'Registrando...' : 'Registrar Compra e Iniciar Processamento'}

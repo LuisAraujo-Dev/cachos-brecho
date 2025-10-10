@@ -37,20 +37,20 @@ const GestaoPecas: React.FC = () => {
     };
 
 
-    if (loading) return <div className="text-center p-10 text-cachos-castanho">Carregando Inventário...</div>;
+    if (loading) return <div className="text-center p-10 text-[var(--color-castanho)]">Carregando Inventário...</div>;
     if (error) return <div className="text-center p-10 text-red-600 bg-red-100 rounded-lg">{error}</div>;
 
 
     return (
         <div className="p-8 max-w-full mx-auto">
-            <h1 className="text-4xl font-extrabold text-cachos-castanho mb-6 flex items-center space-x-3">
+            <h1 className="text-4xl font-extrabold text-[var(--color-castanho)] mb-6 flex items-center space-x-3">
                 <Box size={32} />
                 <span>Gestão Completa de Inventário</span>
             </h1>
             
             <div className="mb-4 flex justify-between items-center">
                 <p className="text-lg text-gray-600">Total de {pecasList.length} peças registradas.</p>
-                <button onClick={refresh} className="p-2 bg-cachos-salvia text-white rounded-md hover:bg-cachos-salvia/90 flex items-center space-x-2">
+                <button onClick={refresh} className="p-2 bg-[var(--color-salvia)] text-white rounded-md hover:bg-[var(--color-salvia)90] flex items-center space-x-2">
                     <RefreshCw size={16} /> 
                     <span>Atualizar Lista</span>
                 </button>
@@ -73,7 +73,7 @@ const GestaoPecas: React.FC = () => {
                         <tbody className="bg-white divide-y divide-gray-200">
                             {pecasList.map((p) => (
                                 <tr key={p.id}>
-                                    <td className="px-4 py-2 whitespace-nowrap text-sm font-semibold text-cachos-castanho">{p.id}</td>
+                                    <td className="px-4 py-2 whitespace-nowrap text-sm font-semibold text-[var(--color-castanho)]">{p.id}</td>
                                     <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">{p.nome}</td>
                                     <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-600">
                                         {p.marca?.nome || 'ID: ' + p.marcaId} 
@@ -89,7 +89,7 @@ const GestaoPecas: React.FC = () => {
                                         <button 
                                             onClick={() => handleEdit(p)}
                                             title="Editar Peça"
-                                            className="text-cachos-dourado hover:text-cachos-castanho transition"
+                                            className="text-cachos-dourado hover:text-[var(--color-castanho)] transition"
                                         >
                                             <Edit size={16} />
                                         </button>
